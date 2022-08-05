@@ -1,1 +1,2 @@
 # pdfviewer
+npm run dev
