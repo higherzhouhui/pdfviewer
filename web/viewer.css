@@ -2990,3 +2990,22 @@ dialog :link {
     display: none;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#noteContainer {
+  flex: 1;
+  height: 100%;
+  padding: 12px;
+}
+.textBj {
+  width: 100%;
+}
+
+#noteContainer p {
+  height: 100px;
+  overflow: auto;
+  text-overflow: ellipsis;
+}

@@ -35,6 +35,8 @@ See https://github.com/adobe-type-tools/cmap-resources
   <script src="/build/pdf.js"></script>
 
   <script src="/web/viewer.js"></script>
+  <!-- <script src="/web/jquery-3.6.0.min.map" type="text/javascript"></script> -->
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 
 </head>
 
@@ -401,7 +403,7 @@ See https://github.com/adobe-type-tools/cmap-resources
         </div>
       </div>
 
-      <div id="viewerContainer" tabindex="0" onmouseup="SelectText()">
+      <div id="viewerContainer" tabindex="0">
         <div id="viewer" class="pdfViewer"></div>
       </div>
 
@@ -523,43 +525,49 @@ See https://github.com/adobe-type-tools/cmap-resources
   </div> <!-- outerContainer -->
   <div id="printContainer"></div>
   <div id="noteContainer">
-    做笔记
+    <p><span>选中内容：</span><span class="bjlabelc"></span></p>
+    <p><span>所在位置：</span><span class="bjlabelp"></span></p>
+    <textarea class="textBj" rows="10" placeholder="请输入"></textarea>
+    <input type="button" value="保存" />
   </div>
   <input type="file" id="fileInput" class="hidden">
   <script>
-    const viewBookmark = document.getElementById('viewBookmark');
-    const noteContainer = document.getElementById('noteContainer');
+    var selectString = '';
+    $(document).ready(function () {
+      // 开始写 jQuery 代码...
+      $('#viewerContainer').mouseup(function () {
+        SelectText();
+        getCurrentPos();
+      })
 
-    noteContainer.onclick = function () {
-      // 根据url获取当前页码
-      viewBookmark.click();
-    }
+      function getCurrentPos() {
+        $('#viewBookmark').click();
+        const hash = location.hash;
+        $('.bjlabelp').html(hash);
+      }
 
-
-
-    function SelectText() {
-      try {
-        var selecter = window.getSelection().toString();
-        if (selecter != null && selecter.trim() != "") {
-          alert(selecter);
-        }
-      } catch (err) {
-        var selecter = document.selection.createRange();
-        var s = selecter.text;
-        if (s != null && s.trim() != "") {
-          alert(s)
+      //替换文本前与后的空格
+      String.prototype.trim = function () {
+        return this.replace(/(^\s*)|(\s*$)/g, "");
+      }
+      function SelectText() {
+        try {
+          var selecter = window.getSelection().toString();
+          if (selecter != null && selecter.trim() != "") {
+            selectString = selecter;
+            $('.bjlabelc').html(selectString);
+          }
+        } catch (err) {
+          var selecter = document.selection.createRange();
+          var s = selecter.text;
+          if (s != null && s.trim() != "") {
+            alert(s)
+          }
         }
       }
-    }
-    //替换文本前与后的空格
-    String.prototype.trim = function () {
-      return this.replace(/(^\s*)|(\s*$)/g, "");
-    }
-
+    })
 
   </script>
-
-  <script type="module" src="/web/translate.js"></script>
 </body>
 
 </html>
