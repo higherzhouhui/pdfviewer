@@ -26,13 +26,14 @@ See https://github.com/adobe-type-tools/cmap-resources
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="google" content="notranslate">
-  <title>PDF.js viewer</title>
+  <title>Cogito PDF viewer</title>
 
   <link rel="stylesheet" href="/web/viewer.css">
 
   <!-- This snippet is used in production (included from viewer.html) -->
   <link rel="resource" type="application/l10n" href="/web/locale/locale.properties">
   <script src="/build/pdf.js"></script>
+  <link rel="icon" href="/favicon.ico" />
 
   <script src="/web/viewer.js"></script>
   <!-- <script src="/web/jquery-3.6.0.min.map" type="text/javascript"></script> -->
@@ -524,21 +525,21 @@ See https://github.com/adobe-type-tools/cmap-resources
 
   </div> <!-- outerContainer -->
   <div id="printContainer"></div>
-  <div id="noteContainer">
+  <!-- <div id="noteContainer">
     <p><span>选中内容：</span><span class="bjlabelc"></span></p>
     <p><span>所在位置：</span><span class="bjlabelp"></span></p>
     <textarea class="textBj" rows="10" placeholder="请输入"></textarea>
     <input type="button" value="保存" />
-  </div>
+  </div> -->
   <input type="file" id="fileInput" class="hidden">
   <script>
     var selectString = '';
     $(document).ready(function () {
       // 开始写 jQuery 代码...
-      $('#viewerContainer').mouseup(function () {
-        SelectText();
-        getCurrentPos();
-      })
+      // $('#viewerContainer').mouseup(function () {
+      //   SelectText();
+      //   getCurrentPos();
+      // })
       const viewBookmark = document.getElementById('viewBookmark');
 
       $('#noteContainer').click(function() {

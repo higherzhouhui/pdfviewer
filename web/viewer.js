@@ -245,7 +245,7 @@ function getQueryString(name) {
 const pdfUrl = getQueryString('pdfUrl');
 {
   defaultOptions.defaultUrl = {
-    value: pdfUrl || "test.pdf",
+    value: pdfUrl || "Cogito_1.0_Green_Paper(English).pdf",
     kind: OptionKind.VIEWER
   };
   defaultOptions.disablePreferences = {
@@ -5486,7 +5486,6 @@ class PDFFindBar {
     this.l10n = l10n;
     this.toggleButton.addEventListener("click", () => {
       this.toggle();
-      alert(1111);
     });
     this.findField.addEventListener("input", () => {
       this.dispatchEvent("");
@@ -9470,7 +9469,7 @@ var _pdfjsLib = __webpack_require__(4);
 const DRAW_UPSCALE_FACTOR = 2;
 const MAX_NUM_SCALING_STEPS = 3;
 const THUMBNAIL_CANVAS_BORDER_WIDTH = 1;
-const THUMBNAIL_WIDTH = 98;
+const THUMBNAIL_WIDTH = 128;
 
 class TempImageFactory {
   static #tempCanvas = null;
@@ -13755,7 +13754,7 @@ class SecondaryToolbar {
       pageRotateCcw: options.pageRotateCcwButton
     };
     this.eventBus = eventBus;
-    this.opened = false;
+    this.opened = true;
     this.reset();
     this.#bindClickListeners();
     this.#bindCursorToolsListener(options);
